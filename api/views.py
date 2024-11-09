@@ -16,7 +16,7 @@ from pydub.playback import play
 def get_voice(request):
     return JsonResponse({"sdfsd":'dfgdfgdfg'})
 
-def play_audio_from_bytes(audio_data,format='wave'):
+def play_audio_from_bytes(audio_data,format='wav'):
     audio_Data_io = io.BytesIO(audio_data)
     audio_Segment = AudioSegment.from_file(audio_Data_io, format=format)
     play(audio_Segment)
@@ -37,7 +37,7 @@ def my_api_view(request):
             result.get()
             audio_data = result.get().audio_data
             play_audio_from_bytes(audio_data)
-            with open("output.wave", "wb") as file:
+            with open("output.wav", "wb") as file:
                 file.write(audio_data)
 
             audio_stream = io.BytesIO()
@@ -49,7 +49,7 @@ def my_api_view(request):
 
             # Send the audio data as a response for download
             response = HttpResponse(audio_stream, content_type='audio/wave')
-            response['Content-Disposition'] = 'attachment; filename="output.wave"'
+            response['Content-Disposition'] = 'attachment; filename="output.wav"'
             return response
 
 
