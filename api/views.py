@@ -24,7 +24,7 @@ def my_api_view(request):
        # result = synthesizer.speak_text_async('და').get()
         #audio_data_stream = speechsdk.AudioDataStream(result)
         audio_stream = io.BytesIO()
-        static_file_path = os.path.join(settings.BASE_DIR, 'staticfiles', 'temp.wav')
+        static_file_path = os.path.join(settings.BASE_DIR, 'staticfiles', 'temp1.wav')
         #audio_data_stream.save_to_wav_file(static_file_path)  # Save it temporarily as a file
 
         # Now we can read the contents of the temporary file into the BytesIO object
