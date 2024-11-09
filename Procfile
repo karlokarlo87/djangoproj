@@ -1,1 +1,1 @@
-web gunicorn cool_counters.wsgi:application --log-file -
+web: gunicorn djangoproj.wsgi:application --log-file -
