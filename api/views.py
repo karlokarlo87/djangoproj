@@ -19,19 +19,5 @@ def my_api_view(request):
         synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
         result = synthesizer.speak_text_async('რატომ')
         audio_data_stream = speechsdk.AudioDataStream(result.get())
-        #audio_stream = io.BytesIO()
 
-        #audio_data_stream.save_to_wav_file("/temp.wav")  # Save it temporarily as a file
-
-        # Now we can read the contents of the temporary file into the BytesIO object
-        #with open("temp.wav", "rb") as temp_file:
-            #audio_stream.write(temp_file.read())
-
-        # Rewind the stream to the beginning
-        #audio_stream.seek(0)
-
-        # Send the audio data as a response
-       # response = HttpResponse(audio_stream, content_type='audio/wav')
-       # response['Content-Disposition'] = 'attachment; filename="output.wav"'
-        #return response
         return JsonResponse({"sdfsd": 'dfgdfgdfg'})
