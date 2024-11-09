@@ -17,11 +17,17 @@ def my_api_view(request):
         speech_config.speech_synthesis_voice_name = "ka-GE-EkaNeural"
         audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
         synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
-        result = synthesizer.speak_text_async('რატომ').get()
-       # audio_data_stream = speechsdk.AudioDataStream(result.get())
-        audio_data = result.audio_data
+        result = synthesizer.speak_text_async("გია").get()
 
-        # Create a response with the audio data
-        response = HttpResponse(audio_data, content_type="audio/wav")
-        response['Content-Disposition'] = 'attachment; filename="speech.wav"'
-        return response
+        # Check if the synthesis succeeded
+        if result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
+            # If successful, retrieve the audio data stream
+            audio_data = result.audio_data
+
+            # Create the response with the audio data
+            response = HttpResponse(audio_data, content_type="audio/wav")
+            response['Content-Disposition'] = 'attachment; filename="speech.wav"'
+            return response
+        else:
+            # If there was an error during synthesis
+            return HttpResponse("Speech synthesis failed.", status=500)
