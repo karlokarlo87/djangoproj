@@ -21,10 +21,10 @@ def my_api_view(request):
         audio_data_stream = speechsdk.AudioDataStream(result.get())
         audio_stream = io.BytesIO()
 
-        audio_data_stream.save_to_wav_file("/temp.wav")  # Save it temporarily as a file
+        #audio_data_stream.save_to_wav_file("/temp.wav")  # Save it temporarily as a file
 
         # Now we can read the contents of the temporary file into the BytesIO object
-        with open("temp.wav", "rb") as temp_file:
+        with open("/temp.wav", "rb") as temp_file:
             audio_stream.write(temp_file.read())
 
         # Rewind the stream to the beginning
