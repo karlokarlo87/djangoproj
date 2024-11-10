@@ -41,7 +41,8 @@ CORS_ALLOW_HEADERS = [
     'x-csrf-token',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8001']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8001',"https://djangoapitest-c8f68f489d38.herokuapp.com"]
+CSRF_COOKIE_SECURE = False
 # Optional: Allow specific HTTP methods
 CORS_ALLOW_METHODS = [
     'GET',
