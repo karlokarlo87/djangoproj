@@ -23,10 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9f&7a%b(cc37&3wxo5nj)t0ufaojkxvr*%5*$q4n(_jiif94h!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*","https://djangoapitest-c8f68f489d38.herokuapp.com","djangoapitest-c8f68f489d38.herokuapp.com"]
-
+#ALLOWED_HOSTS = ["*","https://djangoapitest-c8f68f489d38.herokuapp.com","djangoapitest-c8f68f489d38.herokuapp.com","localhost:8000"]
+ALLOWED_HOSTS=['*']
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
