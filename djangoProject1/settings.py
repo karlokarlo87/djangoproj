@@ -23,37 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9f&7a%b(cc37&3wxo5nj)t0ufaojkxvr*%5*$q4n(_jiif94h!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*","https://djangoapitest-c8f68f489d38.herokuapp.com","djangoapitest-c8f68f489d38.herokuapp.com","localhost:8000"]
-#ALLOWED_HOSTS=['*']
-CORS_ALLOW_ALL_ORIGINS = False  # Enable this for specific origins
+ALLOWED_HOSTS = ["*"]
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8000',  # Frontend origin
-    "https://djangoapitest-c8f68f489d38.herokuapp.com"
+    "http://localhost:8001",
 ]
-
-# If needed, allow specific headers:
-CORS_ALLOW_HEADERS = [
-    'access-control-allow-headers',  # Allow custom headers as needed
-    'content-type',
-    'authorization',
-    'x-csrf-token',
-]
-
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8001',"https://djangoapitest-c8f68f489d38.herokuapp.com"]
-CSRF_COOKIE_SECURE = False
-# Optional: Allow specific HTTP methods
-CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'DELETE',
-]
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.your-frontend-domain\.com$",
-]
-# Application definition
+CORS_ALLOW_ALL_ORIGINS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -66,7 +42,12 @@ INSTALLED_APPS = [
     'corsheaders',
     'api',
 ]
-
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'x-csrftoken',
+    'x-requested-with',
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -78,7 +59,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
 ]
-CORS_ALLOW_ALL_ORIGINS = True
+
 ROOT_URLCONF = 'djangoProject1.urls'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 TEMPLATES = [
