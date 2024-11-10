@@ -25,15 +25,17 @@ SECRET_KEY = 'django-insecure-9f&7a%b(cc37&3wxo5nj)t0ufaojkxvr*%5*$q4n(_jiif94h!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-#ALLOWED_HOSTS = ["*","https://djangoapitest-c8f68f489d38.herokuapp.com","djangoapitest-c8f68f489d38.herokuapp.com","localhost:8000"]
-ALLOWED_HOSTS=['*']
-CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS = ["*","https://djangoapitest-c8f68f489d38.herokuapp.com","djangoapitest-c8f68f489d38.herokuapp.com","localhost:8000"]
+#ALLOWED_HOSTS=['*']
+CORS_ALLOW_ALL_ORIGINS = False  # Enable this for specific origins
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",  # Add this to allow local requests
-    "https://djangoapitest-c8f68f489d38.herokuapp.com",  # Add your frontend domain if needed
+    'http://localhost:8000',  # Frontend origin
 ]
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    "access-control-allow-origin",  # Add any custom headers here
+
+# If needed, allow specific headers:
+CORS_ALLOW_HEADERS = [
+    'access-control-allow-headers',  # Allow custom headers as needed
+
 ]
 # Application definition
 
