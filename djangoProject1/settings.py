@@ -41,7 +41,7 @@ CORS_ALLOW_HEADERS = [
     'x-csrf-token',
 ]
 
-
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8001']
 # Optional: Allow specific HTTP methods
 CORS_ALLOW_METHODS = [
     'GET',
