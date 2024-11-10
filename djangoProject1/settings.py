@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
-
+from corsheaders.defaults import default_headers
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,7 +28,13 @@ DEBUG = False
 #ALLOWED_HOSTS = ["*","https://djangoapitest-c8f68f489d38.herokuapp.com","djangoapitest-c8f68f489d38.herokuapp.com","localhost:8000"]
 ALLOWED_HOSTS=['*']
 CORS_ALLOW_ALL_ORIGINS = True
-
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",  # Add this to allow local requests
+    "https://djangoapitest-c8f68f489d38.herokuapp.com",  # Add your frontend domain if needed
+]
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "access-control-allow-origin",  # Add any custom headers here
+]
 # Application definition
 
 INSTALLED_APPS = [
