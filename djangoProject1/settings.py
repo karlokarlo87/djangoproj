@@ -49,6 +49,9 @@ CORS_ALLOW_METHODS = [
     'PUT',
     'DELETE',
 ]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.your-frontend-domain\.com$",
+]
 # Application definition
 
 INSTALLED_APPS = [
