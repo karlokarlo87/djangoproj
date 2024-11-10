@@ -30,7 +30,7 @@ def my_api_view(request):
             region = "eastus"
 
             voice = "ka-GE-EkaNeural"
-            text = "თამო"
+            text = request.POST.get('text', None)
 
             headers = {
                 "Ocp-Apim-Subscription-Key": subscription_key,
