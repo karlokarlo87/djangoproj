@@ -30,12 +30,24 @@ ALLOWED_HOSTS = ["*","https://djangoapitest-c8f68f489d38.herokuapp.com","djangoa
 CORS_ALLOW_ALL_ORIGINS = False  # Enable this for specific origins
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',  # Frontend origin
+    "https://djangoapitest-c8f68f489d38.herokuapp.com"
 ]
 
 # If needed, allow specific headers:
 CORS_ALLOW_HEADERS = [
     'access-control-allow-headers',  # Allow custom headers as needed
+    'content-type',
+    'authorization',
+    'x-csrf-token',
+]
 
+
+# Optional: Allow specific HTTP methods
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
 ]
 # Application definition
 
