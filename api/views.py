@@ -30,7 +30,8 @@ def my_api_view(request):
             region = "eastus"
 
             voice = "ka-GE-EkaNeural"
-            text = request.POST.get('text')
+            data = json.loads(request.body)  # Parse incoming JSON data
+            text = data.get('text', None)  # Get the text parameter
 
             headers = {
                 "Ocp-Apim-Subscription-Key": subscription_key,
