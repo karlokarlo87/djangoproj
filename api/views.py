@@ -24,42 +24,41 @@ def play_audio_from_bytes(audio_data,format='wave'):
     play(audio_Segment)
 @csrf_exempt
 def my_api_view(request):
-    if request.method == "GET":  # or 'GET'
-        if request.method == "GET":  # or 'GET'
-            subscription_key = "1leCCsjzYrtC8b8xUcpyjTCUQszkq64JcUmJsUqes0ucLXRIh0L5JQQJ99AJACYeBjFXJ3w3AAAYACOGEWz6"
-            region = "eastus"
+    if request.method == "POST":  # or 'GET'
+        subscription_key = "1leCCsjzYrtC8b8xUcpyjTCUQszkq64JcUmJsUqes0ucLXRIh0L5JQQJ99AJACYeBjFXJ3w3AAAYACOGEWz6"
+        region = "eastus"
 
-            voice = "ka-GE-EkaNeural"
-            text = "თამო"
+        voice = "ka-GE-EkaNeural"
+        text = request.POST.get('text', None)
 
-            headers = {
-                "Ocp-Apim-Subscription-Key": subscription_key,
-                "Content-Type": "application/ssml+xml",
-                "X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm",
-            }
+        headers = {
+            "Ocp-Apim-Subscription-Key": subscription_key,
+            "Content-Type": "application/ssml+xml",
+            "X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm",
+        }
 
-            # Create the SSML request with the correct language
-            body = f"""
-            <speak version='1.0' xml:lang='ka-GE'>
-                <voice xml:lang='ka-GE' xml:gender='Female' name='{voice}'>
-                    {text}
-                </voice>
-            </speak>"""
+        # Create the SSML request with the correct language
+        body = f"""
+        <speak version='1.0' xml:lang='ka-GE'>
+            <voice xml:lang='ka-GE' xml:gender='Female' name='{voice}'>
+                {text}
+            </voice>
+        </speak>"""
 
-            # Send POST request to Azure TTS API
-            url = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
-            response = requests.post(url, headers=headers, data=body)
+        # Send POST request to Azure TTS API
+        url = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
+        response = requests.post(url, headers=headers, data=body)
 
-            # Check if request was successful
-            if response.status_code == 200:
-                # Send the audio data as a response for download
-                audio_data = response.content
-                response = HttpResponse(audio_data, content_type="audio/wav")
-                response["Content-Disposition"] = 'attachment; filename="output1.wav"'
-                return response
-            else:
-                # Print error details if the request fails
-                print(f"Error: {response.status_code}, {response.text}")
-                return HttpResponse("Failed to generate speech", status=500)
+        # Check if request was successful
+        if response.status_code == 200:
+            # Send the audio data as a response for download
+            audio_data = response.content
+            response = HttpResponse(audio_data, content_type="audio/wav")
+            response["Content-Disposition"] = 'attachment; filename="output1.wav"'
+            return response
+        else:
+            # Print error details if the request fails
+            print(f"Error: {response.status_code}, {response.text}")
+            return HttpResponse("Failed to generate speech", status=500)
 
 
