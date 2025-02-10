@@ -43,7 +43,9 @@ def my_api_view(request):
             body = f"""
             <speak version='1.0' xml:lang='ka-GE'>
                 <voice xml:lang='ka-GE' xml:gender='Female' name='{voice}'>
-                    {text}
+                    <prosody rate="+50%">
+                        {text}
+                    </prosody>
                 </voice>
             </speak>"""
 
