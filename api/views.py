@@ -26,8 +26,8 @@ def play_audio_from_bytes(audio_data,format='wave'):
 def my_api_view(request):
     if request.method == "POST":  # or 'GET'
         if request.method == "POST":  # or 'GET'
-            subscription_key = "1leCCsjzYrtC8b8xUcpyjTCUQszkq64JcUmJsUqes0ucLXRIh0L5JQQJ99AJACYeBjFXJ3w3AAAYACOGEWz6"
-            region = "eastus"
+            subscription_key = "AsTBxRq7eULibLmiAAyfkZZyBuTLv2bZmnYK5QICODwsXdCWsCg0JQQJ99BBACHYHv6XJ3w3AAAYACOGrXnx"
+            region = "eastus2"
 
             voice = "ka-GE-EkaNeural"
             data = json.loads(request.body)  # Parse incoming JSON data
